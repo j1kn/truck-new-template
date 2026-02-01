@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TransitPro | UK Haulage and Logistics</title>
+    <meta name="description" content="UK wide haulage and logistics services. Same day delivery, pallet transport, and contract freight solutions. Get your quote today.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========================================
+           CSS VARIABLES - Design System
+        ======================================== */
+        :root {
+            /* Colors - Dark Industrial Theme */
+            --bg: #1a1a1f;
+            --surface: #25252b;
+            --surface-2: #2d2d35;
+            --text: #f5f5f0;
+            --muted: #9ca3af;
+            --accent: #ffb800;
+            --accent-2: #ff9500;
+            --border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+            
+            /* Spacing */
+            --max-width: 1200px;
+            --gutter: 24px;
+            --section-padding: 96px;
+            --section-padding-mobile: 64px;
+            --radius: 16px;
+            
+            /* Typography Scale */
+            --h1-desktop: 56px;
+            --h1-mobile: 34px;
+            --h2-desktop: 36px;
+            --h2-mobile: 26px;
+            --body-desktop: 18px;
+            --body-mobile: 16px;
+            
+            /* Motion */
+            --transition-fast: 200ms;
+            --transition-medium: 300ms;
+            --stagger-delay: 90ms;
+            
+            /* Component Heights */
+            --header-desktop: 84px;
+            --header-mobile: 72px;
+        }
+
+        /* ========================================
+           RESET & BASE
+        ======================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: var(--body-desktop);
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: var(--body-mobile);
+            }
+        }
+
+        /* ========================================
+           TYPOGRAPHY
+        ======================================== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: var(--h1-desktop);
+        }
+
+        h2 {
+            font-size: var(--h2-desktop);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: var(--h1-mobile); }
+            h2 { font-size: var(--h2-mobile); }
+        }
+
+        a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        /* ========================================
+           UTILITIES
+        ======================================== */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--gutter);
+        }
+
+        .section-padding {
+            padding-top: var(--section-padding);
+            padding-bottom: var(--section-padding);
+        }
+
+        @media (max-width: 768px) {
+            .section-padding {
+                padding-top: var(--section-padding-mobile);
+                padding-bottom: var(--section-padding-mobile);
+            }
+        }
+
+        /* Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity var(--transition-medium), transform var(--transition-medium);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger children */
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(24px);
+        }
+
+        .stagger-children.visible > *:nth-child(1) { transition-delay: calc(var(--stagger-delay) * 0); }
+        .stagger-children.visible > *:nth-child(2) { transition-delay: calc(var(--stagger-delay) * 1); }
+        .stagger-children.visible > *:nth-child(3) { transition-delay: calc(var(--stagger-delay) * 2); }
+        .stagger-children.visible > *:nth-child(4) { transition-delay: calc(var(--stagger-delay) * 3); }
+        .stagger-children.visible > *:nth-child(5) { transition-delay: calc(var(--stagger-delay) * 4); }
+        .stagger-children.visible > *:nth-child(6) { transition-delay: calc(var(--stagger-delay) * 5); }
+
+        .stagger-children.visible > * {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity var(--transition-medium), transform var(--transition-medium);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 32px;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-2);
+            color: var(--bg);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        /* ========================================
+           BACKGROUNDS
+        ======================================== */
+        .bg-gradient {
+            background: linear-gradient(135deg, var(--bg) 0%, var(--surface) 50%, var(--bg) 100%);
+        }
+
+        .bg-pattern {
+            position: relative;
+        }
+
+        .bg-pattern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(255, 184, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 184, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        /* ========================================
+           HEADER
+        ======================================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-desktop);
+            background: rgba(26, 26, 31, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width var(--transition-fast);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Header */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .menu-toggle svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                height: var(--header-mobile);
+            }
+
+            .nav-links,
+            .nav .btn {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* ========================================
+           MOBILE MENU DRAWER
+        ======================================== */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 320px;
+            height: 100vh;
+            background: var(--surface);
+            z-index: 1001;
+            transition: right var(--transition-medium);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity var(--transition-medium), visibility var(--transition-medium);
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-close svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .mobile-nav-links a {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .mobile-menu-cta {
+            margin-top: auto;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ========================================
+           HERO SECTION
+        ======================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--header-desktop);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 560px;
+        }
+
+        .hero-headline {
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .hero-subheading {
+            font-size: 20px;
+            color: var(--muted);
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        .hero-trust {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 32px;
+            font-size: 15px;
+            color: var(--muted);
+        }
+
+        .hero-trust svg {
+            width: 20px;
+            height: 20px;
+            color: var(--accent);
+        }
+
+        .hero-visual {
+            position: relative;
+            transform: rotate(-10deg);
+        }
+
+        .hero-video-container {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-video-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 184, 0, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .hero-video-placeholder {
+            width: 100%;
+            aspect-ratio: 16/10;
+            background: linear-gradient(135deg, var(--surface-2) 0%, var(--surface) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-video-placeholder::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 184, 0, 0.05) 10px,
+                rgba(255, 184, 0, 0.05) 20px
+            );
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-video-placeholder svg {
+            width: 80px;
+            height: 80px;
+            color: var(--accent);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Mobile Hero */
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: var(--header-mobile);
+                min-height: auto;
+            }
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-visual {
+                order: -1;
+                transform: rotate(0);
+            }
+
+            .hero-video-placeholder {
+                aspect-ratio: 16/10;
+            }
+
+            .hero-subheading {
+                font-size: 18px;
+            }
+
+            .hero-cta .btn {
+                width: 100%;
+            }
+        }
+
+        /* ========================================
+           STICKY MOBILE CTA BAR
+        ======================================== */
+        .sticky-cta-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 12px 16px;
+            z-index: 999;
+            gap: 12px;
+        }
+
+        .sticky-cta-bar .btn {
+            flex: 1;
+            padding: 14px 20px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .sticky-cta-bar {
+                display: flex;
+            }
+
+            body {
+                padding-bottom: 80px;
+            }
+        }
+
+        /* ========================================
+           SERVICES SECTION
+        ======================================== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .service-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            transition: all var(--transition-fast);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--surface-2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: all var(--transition-fast);
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--accent);
+        }
+
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--accent);
+            transition: color var(--transition-fast);
+        }
+
+        .service-card:hover .service-icon svg {
+            color: var(--bg);
+        }
+
+        .service-title {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .service-description {
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Mobile Services */
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .service-card {
+                padding: 24px;
+            }
+
+            .service-icon {
+                width: 64px;
+                height: 64px;
+            }
+
+            .service-icon svg {
+                width: 32px;
+                height: 32px;
+            }
+        }
+
+        /* ========================================
+           COVERAGE SECTION
+        ======================================== */
+        .coverage-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .coverage-map {
+            position: relative;
+            aspect-ratio: 4/3;
+            background: var(--surface);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .uk-map-svg {
+            width: 100%;
+            height: 100%;
+            padding: 40px;
+        }
+
+        .uk-map-svg svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .map-dot {
+            fill: var(--accent);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .map-dot:nth-child(2) { animation-delay: 0.4s; }
+        .map-dot:nth-child(3) { animation-delay: 0.8s; }
+        .map-dot:nth-child(4) { animation-delay: 1.2s; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.5); }
+        }
+
+        .coverage-content h2 {
+            margin-bottom: 24px;
+        }
+
+        .coverage-content p {
+            color: var(--muted);
+            margin-bottom: 24px;
+            font-size: 18px;
+        }
+
+        .coverage-regions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .coverage-region {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .coverage-region svg {
+            width: 20px;
+            height: 20px;
+            color: var(--accent);
+        }
+
+        .coverage-note {
+            font-size: 15px;
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        /* Mobile Coverage */
+        @media (max-width: 768px) {
+            .coverage-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .coverage-map {
+                order: -1;
+            }
+
+            .uk-map-svg {
+                padding: 24px;
+            }
+
+            .coverage-regions {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ========================================
+           TESTIMONIALS SECTION
+        ======================================== */
+        .testimonials-container {
+            position: relative;
+            margin-top: 48px;
+        }
+
+        .testimonials-track {
+            display: flex;
+            gap: 24px;
+            overflow: hidden;
+        }
+
+        .testimonial-card {
+            flex: 0 0 calc(33.333% - 16px);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            transition: all var(--transition-fast);
+        }
+
+        .testimonial-quote {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -8px;
+            font-family: Georgia, serif;
+            font-size: 48px;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .testimonial-company {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .testimonial-role {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .testimonials-controls {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .testimonials-arrow {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+        }
+
+        .testimonials-arrow:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--bg);
+        }
+
+        .testimonials-arrow svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .testimonials-dots {
+            display: none;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 24px;
+        }
+
+        .testimonials-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            cursor: pointer;
+            transition: background var(--transition-fast);
+        }
+
+        .testimonials-dot.active {
+            background: var(--accent);
+        }
+
+        /* Mobile Testimonials */
+        @media (max-width: 768px) {
+            .testimonial-card {
+                flex: 0 0 100%;
+            }
+
+            .testimonials-controls {
+                display: none;
+            }
+
+            .testimonials-dots {
+                display: flex;
+            }
+        }
+
+        /* ========================================
+           CONTACT SECTION
+        ======================================== */
+        .contact-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            margin-bottom: 24px;
+        }
+
+        .contact-bullets {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .contact-bullets li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+
+        .contact-bullets li svg {
+            width: 24px;
+            height: 24px;
+            color: var(--accent);
+        }
+
+        .contact-form-wrapper {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 16px;
+            transition: border-color var(--transition-fast);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-error {
+            color: #ef4444;
+            font-size: 13px;
+            margin-top: 6px;
+            display: none;
+        }
+
+        .form-group.error input,
+        .form-group.error textarea {
+            border-color: #ef4444;
+        }
+
+        .form-group.error .form-error {
+            display: block;
+        }
+
+        .form-submit {
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .form-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .form-success svg {
+            width: 64px;
+            height: 64px;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .form-success h3 {
+            margin-bottom: 8px;
+        }
+
+        .form-success p {
+            color: var(--muted);
+        }
+
+        /* Mobile Contact */
+        @media (max-width: 768px) {
+            .contact-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-form-wrapper {
+                padding: 24px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 12px 14px;
+                min-height: 48px;
+            }
+        }
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding-top: 64px;
+            padding-bottom: 32px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand p {
+            color: var(--muted);
+            margin-top: 16px;
+            line-height: 1.6;
+        }
+
+        .footer-column h4 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            font-size: 15px;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-contact p {
+            color: var(--muted);
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        .footer-contact strong {
+            color: var(--text);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-bottom-links a {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* Mobile Footer */
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .footer-column {
+                padding-bottom: 24px;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ========================================
+           SECTION HEADERS
+        ======================================== */
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 48px;
+        }
+
+        .section-header h2 {
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--muted);
+            font-size: 18px;
+        }
+
+        /* ========================================
+           LOADING STATE
+        ======================================== */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--bg);
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="#" class="logo">Transit<span>Pro</span></a>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#coverage">Coverage</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <a href="#contact" class="btn btn-primary">Get a Quote</a>
+            </nav>
+            <button class="menu-toggle" aria-label="Open menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay"></div>
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="#" class="logo">Transit<span>Pro</span></a>
+            <button class="mobile-menu-close" aria-label="Close menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#coverage">Coverage</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-cta">
+            <a href="#contact" class="btn btn-primary btn-full">Get a Quote</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero bg-gradient bg-pattern">
+        <div class="container hero-inner">
+            <div class="hero-content">
+                <h1 class="hero-headline reveal">Reliable UK Haulage & Logistics</h1>
+                <p class="hero-subheading reveal">Professional freight solutions for businesses across the United Kingdom. From same-day deliveries to long-distance haulage, we keep your supply chain moving.</p>
+                <div class="hero-cta reveal">
+                    <a href="#contact" class="btn btn-primary">Get a Quote</a>
+                </div>
+                <div class="hero-trust reveal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>UK wide coverage. Same day options.</span>
+                </div>
+            </div>
+            <div class="hero-visual reveal">
+                <div class="hero-video-container">
+                    <div class="hero-video-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Our Services</h2>
+                <p>Comprehensive logistics solutions tailored to your business needs</p>
+            </div>
+            <div class="services-grid stagger-children">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2"/>
+                            <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">General Haulage</h3>
+                    <p class="service-description">Full and part-load transport solutions for all types of cargo across the UK.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Pallet Delivery</h3>
+                    <p class="service-description">Secure pallet transport with tracking and insurance for peace of mind.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Same Day Runs</h3>
+                    <p class="service-description">Urgent delivery services when time is critical for your business.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21l-5-5-5 5"/>
+                            <path d="M12 16V3"/>
+                            <path d="M6 9l6-6 6 6"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Long Distance Freight</h3>
+                    <p class="service-description">Nationwide coverage with reliable schedules and competitive rates.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Contract Logistics</h3>
+                    <p class="service-description">Dedicated fleet solutions and ongoing partnership arrangements.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Fleet Support</h3>
+                    <p class="service-description">Additional capacity and backup for your existing transport operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage Section -->
+    <section id="coverage" class="section-padding bg-pattern">
+        <div class="container">
+            <div class="coverage-inner">
+                <div class="coverage-map reveal">
+                    <div class="uk-map-svg">
+                        <svg viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Scotland -->
+                            <path d="M180 20 L220 25 L240 60 L230 100 L200 130 L160 120 L140 80 L150 40 Z" fill="#2d2d35" stroke="#3d3d45" stroke-width="2"/>
+                            <!-- England -->
+                            <path d="M160 120 L200 130 L230 140 L250 200 L240 280 L200 320 L160 310 L140 250 L150 180 Z" fill="#2d2d35" stroke="#3d3d45" stroke-width="2"/>
+                            <!-- Wales -->
+                            <path d="M140 250 L160 310 L140 330 L120 310 L130 270 Z" fill="#2d2d35" stroke="#3d3d45" stroke-width="2"/>
+                            <!-- Northern Ireland -->
+                            <path d="M80 140 L110 145 L105 175 L75 170 Z" fill="#2d2d35" stroke="#3d3d45" stroke-width="2"/>
+                            
+                            <!-- Route Lines -->
+                            <path d="M180 60 L200 200 L160 280" stroke="#ffb800" stroke-width="2" stroke-dasharray="5,5" opacity="0.4"/>
+                            <path d="M200 130 L240 200 L200 320" stroke="#ffb800" stroke-width="2" stroke-dasharray="5,5" opacity="0.4"/>
+                            <path d="M200 200 L120 290" stroke="#ffb800" stroke-width="2" stroke-dasharray="5,5" opacity="0.4"/>
+                            
+                            <!-- Pulsing Dots - Major Cities -->
+                            <circle class="map-dot" cx="200" cy="60" r="6"/> <!-- Glasgow -->
+                            <circle class="map-dot" cx="180" cy="100" r="6"/> <!-- Edinburgh -->
+                            <circle class="map-dot" cx="200" cy="200" r="8"/> <!-- Manchester -->
+                            <circle class="map-dot" cx="240" cy="220" r="8"/> <!-- Leeds -->
+                            <circle class="map-dot" cx="260" cy="280" r="8"/> <!-- Birmingham -->
+                            <circle class="map-dot" cx="280" cy="340" r="10"/> <!-- London -->
+                            <circle class="map-dot" cx="140" cy="290" r="6"/> <!-- Cardiff -->
+                            <circle class="map-dot" cx="95" cy="155" r="6"/> <!-- Belfast -->
+                        </svg>
+                    </div>
+                </div>
+                <div class="coverage-content reveal">
+                    <h2>UK Wide Coverage</h2>
+                    <p>Operating across all four nations with strategic depot locations and flexible routing options.</p>
+                    <div class="coverage-regions">
+                        <div class="coverage-region">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <span>England</span>
+                        </div>
+                        <div class="coverage-region">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <span>Scotland</span>
+                        </div>
+                        <div class="coverage-region">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <span>Wales</span>
+                        </div>
+                        <div class="coverage-region">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <span>Northern Ireland</span>
+                        </div>
+                    </div>
+                    <p class="coverage-note">Depot based dispatch. Flexible routing. Real-time tracking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Testimonials</h2>
+                <p>What our clients say about working with us</p>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonials-track stagger-children" id="testimonialsTrack">
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">Collected on time. Delivered early. Clear updates throughout the job. TransitPro sets the standard for reliable haulage.</p>
+                        <div class="testimonial-author">
+                            <span class="testimonial-name">James Mitchell</span>
+                            <span class="testimonial-company">Northern Manufacturing Ltd</span>
+                            <span class="testimonial-role">Operations Director</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">We reduced missed deliveries after switching to TransitPro. Response time stayed under 10 minutes even during peak periods.</p>
+                        <div class="testimonial-author">
+                            <span class="testimonial-name">Sarah Chen</span>
+                            <span class="testimonial-company">Retail Distribution Co</span>
+                            <span class="testimonial-role">Logistics Manager</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">Reliable weekly routes for 6 months. Zero damage claims. Their drivers know our sites and procedures inside out.</p>
+                        <div class="testimonial-author">
+                            <span class="testimonial-name">Michael Roberts</span>
+                            <span class="testimonial-company">BuildSupply UK</span>
+                            <span class="testimonial-role">Procurement Lead</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonials-controls">
+                    <button class="testimonials-arrow" id="prevTestimonial" aria-label="Previous testimonial">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <button class="testimonials-arrow" id="nextTestimonial" aria-label="Next testimonial">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="testimonials-dots" id="testimonialsDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-pattern">
+        <div class="container">
+            <div class="contact-inner">
+                <div class="contact-info reveal">
+                    <h2>Get a Quote Today</h2>
+                    <ul class="contact-bullets">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            Same day pickup options
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            Nationwide delivery
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            Fleet ready for contracts
+                        </li>
+                    </ul>
+                    <p style="color: var(--muted);">Fill out the form and our team will get back to you within 30 minutes during business hours.</p>
+                </div>
+                <div class="contact-form-wrapper reveal">
+                    <form id="quoteForm" class="quote-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" id="fullName" name="fullName" required>
+                                <span class="form-error">Please enter your full name</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                                <span class="form-error">Please enter a valid email</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                                <span class="form-error">Please enter your phone number</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="preferredDate">Preferred Date</label>
+                                <input type="date" id="preferredDate" name="preferredDate">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="pickupPostcode">Pickup Postcode *</label>
+                                <input type="text" id="pickupPostcode" name="pickupPostcode" required>
+                                <span class="form-error">Please enter pickup postcode</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="dropoffPostcode">Drop-off Postcode *</label>
+                                <input type="text" id="dropoffPostcode" name="dropoffPostcode" required>
+                                <span class="form-error">Please enter drop-off postcode</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="loadDetails">Load Details *</label>
+                            <textarea id="loadDetails" name="loadDetails" placeholder="Number of pallets, weight, dimensions, special requirements..." required></textarea>
+                            <span class="form-error">Please describe your load</span>
+                        </div>
+                        <button type="submit" class="btn btn-primary form-submit">
+                            <span class="btn-text">Request Quote</span>
+                        </button>
+                    </form>
+                    <div class="form-success" id="formSuccess">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                        <h3>Quote Request Sent!</h3>
+                        <p>We'll be in touch within 30 minutes to discuss your requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">Transit<span>Pro</span></a>
+                    <p>Professional UK haulage and logistics services. Reliable, efficient, and committed to keeping your business moving.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">General Haulage</a></li>
+                        <li><a href="#services">Pallet Delivery</a></li>
+                        <li><a href="#services">Same Day</a></li>
+                        <li><a href="#services">Contract Logistics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Coverage</h4>
+                    <ul class="footer-links">
+                        <li><a href="#coverage">England</a></li>
+                        <li><a href="#coverage">Scotland</a></li>
+                        <li><a href="#coverage">Wales</a></li>
+                        <li><a href="#coverage">Northern Ireland</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column footer-contact">
+                    <h4>Contact</h4>
+                    <p>
+                        <strong>Phone</strong>
+                        0800 123 4567
+                    </p>
+                    <p>
+                        <strong>Email</strong>
+                        quotes@transitpro.co.uk
+                    </p>
+                    <p>
+                        <strong>Hours</strong>
+                        Mon-Fri: 6:00 - 22:00<br>
+                        Sat: 8:00 - 18:00
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TransitPro Logistics Ltd. Company No: 12345678</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile CTA Bar -->
+    <div class="sticky-cta-bar">
+        <a href="tel:08001234567" class="btn btn-secondary">Call Now</a>
+        <a href="#contact" class="btn btn-primary">Get a Quote</a>
+    </div>
+
+    <script>
+        // ========================================
+        // MOBILE MENU
+        // ========================================
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+        const mobileMenuClose = document.querySelector('.mobile-menu-close');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('active');
+            mobileMenuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        menuToggle.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // ========================================
+        // SCROLL REVEAL ANIMATIONS
+        // ========================================
+        const revealElements = document.querySelectorAll('.reveal, .stagger-children');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Initial reveal for hero
+        setTimeout(() => {
+            document.querySelectorAll('.hero .reveal').forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('visible');
+                }, index * 90);
+            });
+        }, 200);
+
+        // ========================================
+        // TESTIMONIALS CAROUSEL
+        // ========================================
+        const testimonialsTrack = document.getElementById('testimonialsTrack');
+        const prevBtn = document.getElementById('prevTestimonial');
+        const nextBtn = document.getElementById('nextTestimonial');
+        const dotsContainer = document.getElementById('testimonialsDots');
+        
+        let currentSlide = 0;
+        const cards = testimonialsTrack.querySelectorAll('.testimonial-card');
+        const totalSlides = cards.length;
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        const visibleCards = isMobile ? 1 : 3;
+        const maxSlide = totalSlides - visibleCards;
+
+        // Create dots for mobile
+        if (isMobile) {
+            cards.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.className = 'testimonials-dot' + (index === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', `Go to testimonial ${index + 1}`);
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function updateCarousel() {
+            const cardWidth = cards[0].offsetWidth + 24; // Including gap
+            testimonialsTrack.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
+            
+            // Update dots
+            if (isMobile) {
+                const dots = dotsContainer.querySelectorAll('.testimonials-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+        }
+
+        function goToSlide(index) {
+            currentSlide = Math.max(0, Math.min(index, maxSlide));
+            updateCarousel();
+        }
+
+        function nextSlide() {
+            if (currentSlide < maxSlide) {
+                currentSlide++;
+            } else {
+                currentSlide = 0;
+            }
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+            } else {
+                currentSlide = maxSlide;
+            }
+            updateCarousel();
+        }
+
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+
+        // Touch/Swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        testimonialsTrack.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        testimonialsTrack.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        }
+
+        // Update on resize
+        window.addEventListener('resize', () => {
+            updateCarousel();
+        });
+
+        // ========================================
+        // CONTACT FORM
+        // ========================================
+        const quoteForm = document.getElementById('quoteForm');
+        const formSuccess = document.getElementById('formSuccess');
+
+        quoteForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Clear previous errors
+            document.querySelectorAll('.form-group').forEach(group => {
+                group.classList.remove('error');
+            });
+
+            // Validate
+            let hasError = false;
+            const requiredFields = ['fullName', 'email', 'phone', 'pickupPostcode', 'dropoffPostcode', 'loadDetails'];
+            
+            requiredFields.forEach(fieldName => {
+                const field = document.getElementById(fieldName);
+                const group = field.closest('.form-group');
+                
+                if (!field.value.trim()) {
+                    group.classList.add('error');
+                    hasError = true;
+                }
+            });
+
+            // Email validation
+            const emailField = document.getElementById('email');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailField.value && !emailPattern.test(emailField.value)) {
+                emailField.closest('.form-group').classList.add('error');
+                hasError = true;
+            }
+
+            if (hasError) return;
+
+            // Show loading state
+            const submitBtn = quoteForm.querySelector('.form-submit');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const originalText = btnText.textContent;
+            
+            submitBtn.disabled = true;
+            btnText.innerHTML = '<span class="loading-spinner"></span> Sending...';
+
+            // Simulate form submission (replace with actual endpoint)
+            await new Promise(resolve => setTimeout(resolve, 1500));
+
+            // Show success
+            quoteForm.style.display = 'none';
+            formSuccess.style.display = 'block';
+        });
+
+        // Real-time validation
+        document.querySelectorAll('.quote-form input, .quote-form textarea').forEach(field => {
+            field.addEventListener('blur', () => {
+                const group = field.closest('.form-group');
+                if (field.hasAttribute('required') && !field.value.trim()) {
+                    group.classList.add('error');
+                } else {
+                    group.classList.remove('error');
+                }
+            });
+
+            field.addEventListener('input', () => {
+                const group = field.closest('.form-group');
+                if (field.value.trim()) {
+                    group.classList.remove('error');
+                }
+            });
+        });
+
+        // ========================================
+        // SMOOTH SCROLL FOR ANCHOR LINKS
+        // ========================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = window.innerWidth > 768 ? 84 : 72;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ========================================
+        // HEADER BACKGROUND ON SCROLL
+        // ========================================
+        const header = document.querySelector('.header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.style.background = 'rgba(26, 26, 31, 0.98)';
+            } else {
+                header.style.background = 'rgba(26, 26, 31, 0.95)';
+            }
+            
+            lastScroll = currentScroll;
+        }, { passive: true });
+    </script>
+</body>
+</html>
