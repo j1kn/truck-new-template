@@ -238,7 +238,7 @@ export function Hero() {
       {/* Background Image */}
       <div ref={bgRef} className="absolute inset-0">
         <img
-          src="/hero_truck_v2.png"
+          src="/hero_truck_v3.png"
           alt="Modern truck on UK motorway"
           className="w-full h-full object-cover will-change-transform"
         />
@@ -326,13 +326,13 @@ export function Hero() {
           <div className="relative bg-charcoal/80 backdrop-blur-xl rounded-3xl p-8 border border-off-white/10 overflow-hidden">
             {/* Glow effect */}
             <div className="absolute -top-20 -right-20 w-40 h-40 bg-industrial-blue/20 rounded-full blur-3xl" />
-            
+
             <div className="relative">
               <div className="flex items-center gap-3 mb-8">
                 <div className="w-10 h-1 bg-industrial-blue rounded-full" />
                 <span className="text-off-white/60 text-sm font-medium">Why choose us</span>
               </div>
-              
+
               <div className="space-y-4">
                 {infoItems.map((item, index) => (
                   <div
